@@ -2,6 +2,7 @@
 
 docker run  -v `pwd`/configs:/configs \
 	-v /tmp:/tmp \
+	-v /bleve:/bleve \
 	--net=host \
 	--privileged=true \
 	--entrypoint=/gleaner \
