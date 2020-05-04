@@ -53,7 +53,8 @@ func SpatialFrame(jsonld string) []SpatialFrameRes {
 	proc := ld.NewJsonLdProcessor()
 	options := ld.NewJsonLdOptions("")
 
-	frame := map[string]interface{}{
+	/*
+        framearray := map[string]interface{}{
 		"@context":        "http://schema.org/",
 		"@explicit":       true,
 		//"@type":           "Dataset",
@@ -62,6 +63,17 @@ func SpatialFrame(jsonld string) []SpatialFrameRes {
                                "@type": "Place",
                                "geo":   map[string]interface{}{},
                        },
+                },
+ 	}	
+	*/
+
+	framesingle := map[string]interface{}{
+		"@context":        "http://schema.org/",
+		"@explicit":       true,
+		//"@type":           "Dataset",
+                "spatialCoverage": map[string]interface{}{
+                       "@type": "Place",
+                       "geo":   map[string]interface{}{},
                 },
 	}
 
@@ -72,11 +84,12 @@ func SpatialFrame(jsonld string) []SpatialFrameRes {
 		return nil
 	}
 
+
 	// TODO review  https://www.w3.org/TR/json-ld-api/#widl-JsonLdOptions-expandContext
 	// Dictionary JsonLdOptions Members
 	// expandContext of type (object? or DOMString), defaulting to null
 	// A context that is used to initialize the active context when expanding a document.
-	framedDoc, err := proc.Frame(myInterface, frame, options) // do I need the options set in order to avoid the large context that seems to be generated?
+	framedDoc, err := proc.Frame(myInterface, framesingle, options) // do I need the options set in order to avoid the large context that seems to be generated?
 	if err != nil {
 		log.Println("Error when trying to frame document", err)
 		return nil

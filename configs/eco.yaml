@@ -5,8 +5,8 @@ gleaner:
   runid: eco
 millers:
   spatial: true
-  organic: true
-  graph: true
+  organic: false
+  graph: false
   mock: false
   shacl: false
   tika: false
@@ -15,8 +15,13 @@ millers:
   fdpgraph: false
   prov: false
 sources:
-- name: getiedadataorg
-  logo: http://geodex.org/images/logos/ieda_maplogo.png
-  url: http://get.iedadata.org/doi/xml-sitemap.php
+        #- name: getiedadataorg
+        #logo: http://geodex.org/images/logos/ieda_maplogo.png
+        #url: http://get.iedadata.org/doi/xml-sitemap.php
+        #sitemapformat: xml
+        ##active: true
+- name: wwwhydroshareorg
+  logo: http://geodex.org/images/logos/cuahsiHydroshare.png
+  url: https://www.hydroshare.org/sitemap-resources.xml
   sitemapformat: xml
   active: true
